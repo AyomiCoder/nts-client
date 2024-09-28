@@ -141,7 +141,7 @@ const Home = () => {
   useEffect(() => {
     getUserInfo();
     getAllNotes();
-    return () => {};
+    return () => { };
   }, []);
 
   // Render a loading state while fetching userInfo
@@ -193,16 +193,26 @@ const Home = () => {
         <MdAdd className="text-[28px] sm:text-[32px] text-white" />
       </button>
       <Modal
-        isOpen={openAddEditModal.isShown}
-        onRequestClose={() => {}}
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.2)',
-          },
-        }}
-        contentLabel=""
-        className="w-[90%] sm:w-[70%] lg:w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-scroll"
-      >
+  isOpen={openAddEditModal.isShown}
+  onRequestClose={() => {}}
+  style={{
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    },
+    content: {
+      position: 'absolute',
+      top: '10%',
+      left: '50%',
+      transform: 'translate(-50%, 0)',
+      maxHeight: '80%',
+      overflowY: 'auto', // Add this for vertical scrolling
+      padding: '20px',
+      borderRadius: '10px',
+    },
+  }}
+  className="w-[90%] sm:w-[70%] lg:w-[40%] bg-white rounded-md mx-auto mt-14 p-5"
+>
+
         <AddEditNotes
           type={openAddEditModal.type}
           noteData={openAddEditModal.data}
