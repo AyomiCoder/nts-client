@@ -30,4 +30,10 @@
  .input-label{
   @apply text-xs text-slate-400
  }
+
+ .search-bar {
+  min-height: 40px; /* Ensures the search bar is tall enough */
+  position: relative; /* Required for z-index to work */
+  z-index: 10; /* Ensure it's on top */
+}
 }
