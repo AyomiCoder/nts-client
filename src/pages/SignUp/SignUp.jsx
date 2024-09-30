@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PasswordInput from '../../components/Input/passwordInput';
+import PasswordInput from '../../components/Input/PasswordInput';
 import Navbar from '../../components/Navbar/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { validateEmail } from '../../utils/helper';
