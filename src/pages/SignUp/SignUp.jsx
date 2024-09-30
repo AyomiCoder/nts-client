@@ -49,7 +49,7 @@ const SignUp = () => {
 
       if (response.data && response.data.accessToken) {
         localStorage.setItem('token', response.data.accessToken);
-        navigate('/dashboard');
+        navigate('/notes');
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {

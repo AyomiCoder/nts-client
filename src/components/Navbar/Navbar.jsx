@@ -28,7 +28,7 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
       {/* Wrapper for mobile and desktop/tablet responsiveness */}
       <div className="md:flex md:items-center md:justify-between">
         {/* Title */}
-        <h2 className="text-xl font-medium text-black py-2 md:py-0">Notes</h2>
+        <h2 className="text-xl font-medium text-black py-2 md:py-0">Knotes</h2>
 
         {/* Hamburger Icon (Only visible on mobile) */}
         <div className="md:hidden absolute right-6 top-4">
