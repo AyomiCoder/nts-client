@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white text-black">
       <header className="px-4 lg:px-6 h-16 flex items-center border-b border-blue-200">
-        <Link className="flex items-center justify-center" href="/">
+        <Link className="flex items-center justify-center" to="/">
           {/* Icon */}
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 20h9m-9-4h6M12 8V4M4 12h16M4 16h.01M4 20h.01M12 16v4m0-8v4m-7.995-6.58a2 2 0 011.414-.92l.293-.041c.827 0 1.497.664 1.497 1.484v2.524c0 .82-.67 1.484-1.497 1.484h-.293a2 2 0 01-1.414-.92m-.293-.041A1.5 1.5 0 104.01 12.58" />
@@ -12,8 +13,8 @@ export default function LandingPage() {
           <span className="ml-2 text-xl font-bold text-blue-600">Knotes</span>
         </Link>
         <nav className="ml-auto flex gap-4">
-          <Link className="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50" href="/signup">Sign Up</Link>
-          <Link className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" href="/login">Login</Link>
+          <Link className="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50" to="/signup">Sign Up</Link>
+          <Link className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" to="/login">Login</Link>
         </nav>
       </header>
 
@@ -28,7 +29,7 @@ export default function LandingPage() {
                 Capture, organize, and access your notes from anywhere. Stay productive with our intuitive note-taking app.
               </p>
               <div className="flex space-x-4 justify-center">
-                <Link className="bg-blue-600 text-white px-6 py-3 rounded-md text-base md:text-lg hover:bg-blue-700" href="/signup">Get Started</Link>
+                <Link className="bg-blue-600 text-white px-6 py-3 rounded-md text-base md:text-lg hover:bg-blue-700" to="/signup">Get Started</Link>
               </div>
             </div>
           </div>
@@ -58,7 +59,7 @@ export default function LandingPage() {
               </p>
               <br />
               <br />
-              <Link className="bg-blue-600 text-white px-6 py-3 rounded-md text-base md:text-lg hover:bg-blue-700" href="/signup">Sign Up</Link>
+              <Link className="bg-blue-600 text-white px-6 py-3 rounded-md text-base md:text-lg hover:bg-blue-700" to="/signup">Sign Up</Link>
             </div>
           </div>
         </section>
@@ -67,7 +68,7 @@ export default function LandingPage() {
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-blue-200">
         <p className="text-xs text-black">© 2024 NotesApp Inc.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4 text-black" href="mailto:alukoayomide623@gmail.com">Developed by Ayomide Aluko</Link>
+          <Link className="text-xs hover:underline underline-offset-4 text-black" to="mailto:alukoayomide623@gmail.com">Developed by Ayomide Aluko</Link>
         </nav>
       </footer>
     </div>
@@ -82,12 +83,6 @@ const Card = ({ icon: Icon, title, description }) => (
     <h3 className="text-black text-lg font-bold mb-2">{title}</h3>
     <p className="text-black">{description}</p>
   </div>
-);
-
-const Link = ({ className, href, children }) => (
-  <a className={className} href={href}>
-    {children}
-  </a>
 );
 
 const EditIcon = () => (
