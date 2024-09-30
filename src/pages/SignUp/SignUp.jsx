@@ -10,6 +10,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // Loader state
 
   const navigate = useNavigate();
 
@@ -32,8 +33,8 @@ const SignUp = () => {
     }
 
     setError('');
+    setLoading(true); // Start the loader when the sign-up process begins
 
-    // Signup API Call
     try {
       const response = await axiosInstance.post('/auth/register', {
         fullName: name,
@@ -44,6 +45,7 @@ const SignUp = () => {
       // Handle successful registration response
       if (response.data && response.data.error) {
         setError(response.data.message);
+        setLoading(false); // Stop the loader if there's an error
         return;
       }
 
@@ -57,6 +59,8 @@ const SignUp = () => {
       } else {
         setError('An unexpected error occurred. Please try again.');
       }
+    } finally {
+      setLoading(false); // Stop the loader when request is complete
     }
   };
 
@@ -76,6 +80,7 @@ const SignUp = () => {
               className="input-box w-full mb-4 lg:mb-6 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              disabled={loading} // Disable input during loading
             />
 
             <input
@@ -84,19 +89,35 @@ const SignUp = () => {
               className="input-box w-full mb-4 lg:mb-6 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={loading} // Disable input during loading
             />
 
             <PasswordInput
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full mb-4 lg:mb-6"
+              disabled={loading} // Disable input during loading
             />
 
             {error && <p className="text-red-500 text-xs lg:text-sm mb-2">{error}</p>}
 
-            <button type="submit" className="btn-primary w-full py-2 lg:py-3 text-sm lg:text-base">
-              Create Account
-            </button>
+            {/* Display loader or button */}
+            {loading ? (
+              <div className="flex justify-center py-2 lg:py-3">
+                <svg className="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+              </div>
+            ) : (
+              <button
+                type="submit"
+                className="btn-primary w-full py-2 lg:py-3 text-sm lg:text-base"
+                disabled={loading} // Disable button during loading
+              >
+                Create Account
+              </button>
+            )}
 
             <p className="text-sm lg:text-base text-center mt-4 lg:mt-6">
               Already have an account?{' '}
