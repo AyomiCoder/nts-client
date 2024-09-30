@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://localhost:1040/api'
+export const BASE_URL = 'https://nts-server.vercel.app/api'
